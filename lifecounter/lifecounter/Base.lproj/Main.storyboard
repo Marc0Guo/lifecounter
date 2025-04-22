@@ -165,7 +165,7 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="32"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uV4-cg-Mmo"/>
+                                            <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m0X-sw-H5c"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -181,13 +181,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="gameButtons" destination="9Nk-RB-U3v" id="qUz-gt-2YB"/>
                         <outlet property="loserLabel" destination="Icy-mo-8Dr" id="p6n-2M-wZN"/>
                         <outlet property="mainContainerStack" destination="7kN-YV-lwL" id="RZx-ln-6qz"/>
                         <outlet property="p1HealthLabel" destination="IZi-Mj-ZPx" id="7AQ-w2-63O"/>
                         <outlet property="p2HealthLabel" destination="ssO-1X-cbi" id="kru-Tn-M8S"/>
                         <outlet property="playerContainerStack" destination="4Zs-p4-eUq" id="NZ2-XT-Zcl"/>
-                        <outletCollection property="gameButtons" destination="AXf-1B-yLb" collectionClass="NSMutableArray" id="eFF-BH-jNL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

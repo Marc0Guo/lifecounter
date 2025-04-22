@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loserLabel.isHidden = true
+        resetGame(self)
         // Do any additional setup after loading the view.
     }
     
@@ -104,6 +104,16 @@ class ViewController: UIViewController {
     @IBAction func p1add5(_ sender: Any) {
         p1HealthCount += 5
         updateP1Label()
+    }
+    
+    @IBAction func resetGame(_ sender: Any) {
+        p1HealthCount = 20
+        p2HealthCount = 20
+        
+        updateP1Label()
+        updateP2Label()
+        
+        loserLabel.alpha = 0
     }
 }
 
