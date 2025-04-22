@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="lifecounter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="7kN-YV-lwL" userLabel="mainContainerStack">
+                                <rect key="frame" x="30" y="148" width="333" height="606"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 Loses!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icy-mo-8Dr">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4Zs-p4-eUq" userLabel="playerContainerStack">
+                                        <rect key="frame" x="0.0" y="103" width="333" height="392"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TPn-4p-ImS" userLabel="Player1Stack">
+                                                <rect key="frame" x="0.0" y="0.0" width="333" height="181"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gVc-0g-n8n">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="75"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz0-1J-1gB">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="75"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="-"/>
+                                                                <connections>
+                                                                    <action selector="p1minus1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BLn-vm-XYc"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fh3-vA-Ub5">
+                                                                <rect key="frame" x="96.333333333333329" y="0.0" width="138.33333333333337" height="75"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kN-dS-t8f">
+                                                                <rect key="frame" x="301" y="0.0" width="32" height="75"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="+"/>
+                                                                <connections>
+                                                                    <action selector="p1add1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pv2-2Z-GIG"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lnm-Fw-TP4">
+                                                        <rect key="frame" x="0.0" y="83" width="333" height="98"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxl-GC-ge9">
+                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="98"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="-5"/>
+                                                                <connections>
+                                                                    <action selector="p1minus5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lcu-rz-oLv"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZi-Mj-ZPx">
+                                                                <rect key="frame" x="114" y="0.0" width="96.333333333333314" height="98"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="82"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3y-5r-C3N">
+                                                                <rect key="frame" x="270" y="0.0" width="63" height="98"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="+5"/>
+                                                                <connections>
+                                                                    <action selector="p1add5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vrD-nX-GNY"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="n56-Bn-CT6" userLabel="Player1Stack">
+                                                <rect key="frame" x="0.0" y="211" width="333" height="181"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZSJ-nc-nIy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="75"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXf-1B-yLb">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="75"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="-"/>
+                                                                <connections>
+                                                                    <action selector="p2minus1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w7x-b7-kTa"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cra-l5-eIz">
+                                                                <rect key="frame" x="94.333333333333329" y="0.0" width="143.33333333333337" height="75"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p98-Xy-NbH">
+                                                                <rect key="frame" x="301" y="0.0" width="32" height="75"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="+"/>
+                                                                <connections>
+                                                                    <action selector="p2add1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9G4-FN-j9o"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ixE-SG-y0W">
+                                                        <rect key="frame" x="0.0" y="83" width="333" height="98"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nk-RB-U3v" userLabel="-5">
+                                                                <rect key="frame" x="0.0" y="0.0" width="54" height="98"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="-5"/>
+                                                                <connections>
+                                                                    <action selector="p2minus5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1si-aS-NPq"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ssO-1X-cbi">
+                                                                <rect key="frame" x="116" y="0.0" width="96.333333333333314" height="98"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="82"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H47-UZ-Hfm">
+                                                                <rect key="frame" x="270" y="0.0" width="63" height="98"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="+5"/>
+                                                                <connections>
+                                                                    <action selector="p2add5:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UAg-Pu-QL6"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fK9-5M-ktd">
+                                        <rect key="frame" x="0.0" y="553.66666666666663" width="333" height="52.333333333333371"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Reset">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="32"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uV4-cg-Mmo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7kN-YV-lwL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="11N-3G-Si7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7kN-YV-lwL" secondAttribute="trailing" constant="30" id="Dq9-Xl-xL4"/>
+                            <constraint firstItem="7kN-YV-lwL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Tdo-oH-IuI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7kN-YV-lwL" secondAttribute="bottom" constant="30" id="UvT-pD-hE4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gameButtons" destination="9Nk-RB-U3v" id="qUz-gt-2YB"/>
+                        <outlet property="loserLabel" destination="Icy-mo-8Dr" id="p6n-2M-wZN"/>
+                        <outlet property="mainContainerStack" destination="7kN-YV-lwL" id="RZx-ln-6qz"/>
+                        <outlet property="p1HealthLabel" destination="IZi-Mj-ZPx" id="7AQ-w2-63O"/>
+                        <outlet property="p2HealthLabel" destination="ssO-1X-cbi" id="kru-Tn-M8S"/>
+                        <outlet property="playerContainerStack" destination="4Zs-p4-eUq" id="NZ2-XT-Zcl"/>
+                        <outletCollection property="gameButtons" destination="AXf-1B-yLb" collectionClass="NSMutableArray" id="eFF-BH-jNL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
