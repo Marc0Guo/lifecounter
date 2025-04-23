@@ -9,15 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var p1HealthLabel: UILabel!
-    @IBOutlet weak var p2HealthLabel: UILabel!
     @IBOutlet weak var loserLabel: UILabel!
     
     @IBOutlet weak var mainContainerStack: UIStackView!
     @IBOutlet weak var playerContainerStack: UIStackView!
+    @IBOutlet weak var addPlayerButton: UIButton!
     
-    var p2HealthCount = 20
-    var p1HealthCount = 20
+    var players: [PlayerView] = []
+    var historyLog: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,93 +26,68 @@ class ViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        
+
         coordinator.animate(alongsideTransition: { _ in
             let isLandscape = size.width > size.height
-            
             self.mainContainerStack.axis = isLandscape ? .vertical : .vertical
             self.playerContainerStack.axis = isLandscape ? .horizontal : .vertical
         })
     }
 
     
-    func updateP1Label() {
-        p1HealthLabel.text = "\(p1HealthCount)"
-        checkForLoser()
+    func addPlayer(name: String) {
+        let nib = UINib(nibName: "PlayerView", bundle: nil)
+        guard let playerView = nib.instantiate(withOwner: nil, options: nil).first as? PlayerView else { return }
+
+        playerView.translatesAutoresizingMaskIntoConstraints = false
+        playerView.nameLabel.text = name
+        
+        playerView.checkForLoss = { [weak self] in
+            self?.checkForLoser()
+        }
+        
+        playerView.onLifeChangedWithText = { [weak self] text in
+            self?.historyLog.append(text)
+            self?.addPlayerButton.isEnabled = false
+        }
+
+        players.append(playerView)
+        playerContainerStack.addArrangedSubview(playerView)
     }
-    
-    func updateP2Label() {
-        p2HealthLabel.text = "\(p2HealthCount)"
-        checkForLoser() 
-    }
-    
+
+
     func checkForLoser() {
-        if p1HealthCount <= 0 {
-            loserLabel.text = "Player 1 LOSES!"
-            loserLabel.alpha = 1
-        } else if p2HealthCount <= 0 {
-            loserLabel.text = "Player 2 LOSES!"
+        let losers = players.filter { $0.life <= 0 }
+        if losers.count == players.count - 1 {
+            let winner = players.first { $0.life > 0 }
+            loserLabel.text = "\(winner?.nameLabel.text ?? "Unknown") wins!"
             loserLabel.alpha = 1
         } else {
             loserLabel.alpha = 0
         }
     }
 
-    @IBAction func p2minus1(_ sender: Any) {
-        if p2HealthCount > 0 {
-            p2HealthCount = max(p2HealthCount - 1, 0)
-            updateP2Label()
+    @IBAction func addPlayerButtonTapped(_ sender: UIButton) {
+        guard players.count < 8 else { return }
+        let nextPlayerIndex = players.count + 1
+        addPlayer(name: "Player \(nextPlayerIndex)")
+        
+        if players.count == 8 {
+            sender.isEnabled = false
         }
-    }
-    
-    @IBAction func p2minus5(_ sender: Any) {
-        if p2HealthCount > 0 {
-            p2HealthCount = max(p2HealthCount - 5, 0)
-            updateP2Label()
-        }
-    }
-    
-    
-    @IBAction func p2add1(_ sender: Any) {
-        p2HealthCount += 1
-        updateP2Label()
-    }
-    
-    @IBAction func p2add5(_ sender: Any) {
-        p2HealthCount += 5
-        updateP2Label()
-    }
-    
-    @IBAction func p1minus1(_ sender: Any) {
-        if p1HealthCount > 0 {
-            p1HealthCount = max(p1HealthCount - 1, 0)
-            updateP1Label()
-        }
-    }
-    
-    @IBAction func p1minus5(_ sender: Any) {
-        if p1HealthCount > 0 {
-            p1HealthCount = max(p1HealthCount - 5, 0)
-            updateP1Label()
-        }
-    }
-    @IBAction func p1add1(_ sender: Any) {
-        p1HealthCount += 1
-        updateP1Label()
-    }
-    @IBAction func p1add5(_ sender: Any) {
-        p1HealthCount += 5
-        updateP1Label()
     }
     
     @IBAction func resetGame(_ sender: Any) {
-        p1HealthCount = 20
-        p2HealthCount = 20
-        
-        updateP1Label()
-        updateP2Label()
-        
+        for player in players {
+            player.removeFromSuperview()
+        }
+        players.removeAll()
+
+        for i in 1...4 {
+            addPlayer(name: "Player \(i)")
+        }
+
         loserLabel.alpha = 0
+        addPlayerButton.isEnabled = true
     }
 }
-
