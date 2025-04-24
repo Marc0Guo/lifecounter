@@ -25,19 +25,19 @@
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMQ-I2-Ub1">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yMQ-I2-Ub1">
                                         <rect key="frame" x="0.0" y="52" width="380" height="592"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="osF-Jv-pfb" userLabel="playerContainerStack">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="osF-Jv-pfb" userLabel="playerContainerStack">
                                                 <rect key="frame" x="0.0" y="0.0" width="380" height="592"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="osF-Jv-pfb" firstAttribute="top" secondItem="ArJ-RF-5Zz" secondAttribute="top" constant="20" id="Ll3-KO-g7N"/>
                                             <constraint firstItem="osF-Jv-pfb" firstAttribute="width" secondItem="ArJ-RF-5Zz" secondAttribute="width" id="WyZ-cQ-uk0"/>
                                             <constraint firstItem="osF-Jv-pfb" firstAttribute="leading" secondItem="Qdv-pR-5QO" secondAttribute="leading" id="iTn-sj-nJB"/>
                                             <constraint firstItem="osF-Jv-pfb" firstAttribute="top" secondItem="Qdv-pR-5QO" secondAttribute="top" id="kBi-R6-Axb"/>
                                             <constraint firstItem="osF-Jv-pfb" firstAttribute="trailing" secondItem="Qdv-pR-5QO" secondAttribute="trailing" id="pwt-ZQ-AGb"/>
-                                            <constraint firstItem="osF-Jv-pfb" firstAttribute="centerY" secondItem="yMQ-I2-Ub1" secondAttribute="centerY" id="vY2-Tb-z4b"/>
                                             <constraint firstItem="osF-Jv-pfb" firstAttribute="bottom" secondItem="Qdv-pR-5QO" secondAttribute="bottom" id="zje-BS-3GX"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="Qdv-pR-5QO"/>
@@ -62,7 +62,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="addPlayerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Brr-7C-KlB"/>
-                                            <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Eq-oO-2rE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fK9-5M-ktd">
@@ -102,10 +101,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addPlayerButton" destination="net-De-O6o" id="i55-aS-pzG"/>
+                        <outlet property="addPlayerButton" destination="net-De-O6o" id="mZJ-lc-gHh"/>
                         <outlet property="loserLabel" destination="Icy-mo-8Dr" id="p6n-2M-wZN"/>
                         <outlet property="mainContainerStack" destination="7kN-YV-lwL" id="RZx-ln-6qz"/>
                         <outlet property="playerContainerStack" destination="osF-Jv-pfb" id="hZe-wI-dEf"/>
+                        <outlet property="resetGameButton" destination="fK9-5M-ktd" id="6vn-kU-sTF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
