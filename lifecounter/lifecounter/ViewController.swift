@@ -17,14 +17,6 @@ class ViewController: UIViewController {
         resetGame(self)
     }
 
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: { _ in
-            let isLandscape = size.width > size.height
-            self.mainContainerStack.axis = isLandscape ? .vertical : .vertical
-            self.playerContainerStack.axis = isLandscape ? .horizontal : .vertical
-        })
-    }
 
     @IBAction func showHistory(_ sender: UIButton) {
         let historyVC = HistoryViewController(nibName: "HistoryView", bundle: nil)
