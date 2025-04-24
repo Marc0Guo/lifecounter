@@ -58,25 +58,49 @@ class ViewController: UIViewController {
             }
             loserLabel.alpha = 0
         }
+        
+        func configureStyledButton(title: String, backgroundColor: UIColor, tintColor: UIColor) -> UIButton {
+            var config = UIButton.Configuration.filled()
+            config.title = title
+            config.baseBackgroundColor = backgroundColor
+            config.baseForegroundColor = tintColor
+            config.cornerStyle = .medium
+            config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
+            let button = UIButton(configuration: config)
+            return button
+        }
 
-        let minusOne = UIButton(type: .system)
-        minusOne.setTitle("-1", for: .normal)
+        let minusOne = configureStyledButton(
+            title: "-1",
+            backgroundColor: UIColor.systemRed.withAlphaComponent(0.2),
+            tintColor: .systemRed
+        )
         minusOne.addAction(UIAction { _ in
             self.playerLives[playerIndex] = max(self.playerLives[playerIndex] - 1, 0)
             updateLifeLabel()
             checkForLoser()
+            self.historyLog.append("\(name) lost 1 life.")
+            self.addPlayerButton.isEnabled = false
         }, for: .touchUpInside)
 
-        let plusOne = UIButton(type: .system)
-        plusOne.setTitle("+1", for: .normal)
+        let plusOne = configureStyledButton(
+            title: "+1",
+            backgroundColor: UIColor.systemTeal.withAlphaComponent(0.2),
+            tintColor: .systemTeal
+        )
         plusOne.addAction(UIAction { _ in
             self.playerLives[playerIndex] += 1
             updateLifeLabel()
             checkForLoser()
+            self.historyLog.append("\(name) gained 1 life.")
+            self.addPlayerButton.isEnabled = false
         }, for: .touchUpInside)
 
-        let subtract = UIButton(type: .system)
-        subtract.setTitle("-", for: .normal)
+        let subtract = configureStyledButton(
+            title: "-",
+            backgroundColor: UIColor.systemRed.withAlphaComponent(0.2),
+            tintColor: .systemRed
+        )
         subtract.addAction(UIAction { _ in
             if let delta = Int(inputField.text ?? "") {
                 let actual = min(delta, self.playerLives[playerIndex])
@@ -88,8 +112,11 @@ class ViewController: UIViewController {
             }
         }, for: .touchUpInside)
 
-        let add = UIButton(type: .system)
-        add.setTitle("+", for: .normal)
+        let add = configureStyledButton(
+            title: "+",
+            backgroundColor: UIColor.systemTeal.withAlphaComponent(0.2),
+            tintColor: .systemTeal
+        )
         add.addAction(UIAction { _ in
             if let delta = Int(inputField.text ?? "") {
                 self.playerLives[playerIndex] += delta
