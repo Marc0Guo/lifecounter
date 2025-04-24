@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="7kN-YV-lwL" userLabel="mainContainerStack">
-                                <rect key="frame" x="30" y="154" width="380" height="704"/>
+                                <rect key="frame" x="30" y="154" width="380" height="644"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 1 Loses!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icy-mo-8Dr">
                                         <rect key="frame" x="0.0" y="0.0" width="380" height="36"/>
@@ -26,10 +26,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMQ-I2-Ub1">
-                                        <rect key="frame" x="0.0" y="52" width="380" height="652"/>
+                                        <rect key="frame" x="0.0" y="52" width="380" height="592"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="osF-Jv-pfb" userLabel="playerContainerStack">
-                                                <rect key="frame" x="0.0" y="0.0" width="380" height="652"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="380" height="592"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -50,15 +50,15 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d8l-SX-bio" userLabel="buttonStack">
-                                <rect key="frame" x="43.333333333333343" y="805.66666666666663" width="353.33333333333326" height="52.333333333333371"/>
+                                <rect key="frame" x="71.333333333333343" y="812.66666666666663" width="297.33333333333326" height="45.333333333333371"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="net-De-O6o">
-                                        <rect key="frame" x="0.0" y="0.0" width="172.66666666666666" height="52.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="144.66666666666666" height="45.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Add Player">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="32"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="addPlayerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Brr-7C-KlB"/>
@@ -66,12 +66,12 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fK9-5M-ktd">
-                                        <rect key="frame" x="180.66666666666669" y="0.0" width="172.66666666666669" height="52.333333333333336"/>
+                                        <rect key="frame" x="152.66666666666669" y="0.0" width="144.66666666666669" height="45.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Reset">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="32"/>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="24"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m0X-sw-H5c"/>
@@ -79,15 +79,25 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raN-Jy-Rh3">
+                                <rect key="frame" x="331.33333333333331" y="60" width="78.666666666666686" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="History"/>
+                                <connections>
+                                    <action selector="showHistory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AsQ-dW-Red"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="7kN-YV-lwL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="11N-3G-Si7"/>
+                            <constraint firstAttribute="trailing" secondItem="raN-Jy-Rh3" secondAttribute="trailing" constant="30" id="1zm-vX-JbB"/>
                             <constraint firstItem="d8l-SX-bio" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="3at-j0-SKc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7kN-YV-lwL" secondAttribute="trailing" constant="30" id="Dq9-Xl-xL4"/>
                             <constraint firstItem="7kN-YV-lwL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Tdo-oH-IuI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7kN-YV-lwL" secondAttribute="bottom" constant="30" id="UvT-pD-hE4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7kN-YV-lwL" secondAttribute="bottom" constant="90" id="UvT-pD-hE4"/>
+                            <constraint firstItem="raN-Jy-Rh3" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="60" id="ff4-Or-fKU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d8l-SX-bio" secondAttribute="bottom" constant="30" id="h5F-6N-OOL"/>
                         </constraints>
                     </view>

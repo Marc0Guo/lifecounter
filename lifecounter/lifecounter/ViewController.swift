@@ -33,6 +33,12 @@ class ViewController: UIViewController {
             self.playerContainerStack.axis = isLandscape ? .horizontal : .vertical
         })
     }
+    
+    @IBAction func showHistory(_ sender: UIButton) {
+        let historyVC = HistoryViewController(nibName: "HistoryView", bundle: nil)
+        historyVC.history = historyLog  
+        present(historyVC, animated: true, completion: nil)
+    }
 
     
     func addPlayer(name: String) {
