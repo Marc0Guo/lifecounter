@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     var players: [UIView] = []
     var playerLives: [Int] = []
     var historyLog: [String] = []
+    var playerNames: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,10 @@ class ViewController: UIViewController {
         let nameLabel = UILabel()
         nameLabel.text = name
         nameLabel.textAlignment = .center
+        nameLabel.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleNameTap(_:)))
+        nameLabel.addGestureRecognizer(tapGesture)
+        playerNames.append(name)
 
         let lifeLabel = UILabel()
         lifeLabel.text = "20"
@@ -49,14 +54,36 @@ class ViewController: UIViewController {
         }
 
         func checkForLoser() {
+            let alivePlayers = playerLives.filter { $0 > 0 }.count
+
             for (index, life) in playerLives.enumerated() {
                 if life <= 0 {
                     loserLabel.text = "Player \(index + 1) loses!"
                     loserLabel.alpha = 1
-                    return
+
+                    if index < self.players.count {
+                        let playerView = self.players[index]
+                        for subview in playerView.subviews {
+                            if let stack = subview as? UIStackView {
+                                for item in stack.arrangedSubviews {
+                                    if let button = item as? UIButton {
+                                        button.isEnabled = false
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
-            loserLabel.alpha = 0
+
+            if alivePlayers == 1 {
+                let alert = UIAlertController(title: "Game over!", message: nil, preferredStyle: .alert)
+                self.historyLog.append("Game over!")
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.resetGame(self)
+                }))
+                present(alert, animated: true, completion: nil)
+            }
         }
         
         func configureStyledButton(title: String, backgroundColor: UIColor, tintColor: UIColor) -> UIButton {
@@ -77,9 +104,10 @@ class ViewController: UIViewController {
         )
         minusOne.addAction(UIAction { _ in
             self.playerLives[playerIndex] = max(self.playerLives[playerIndex] - 1, 0)
+            let currentName = self.playerNames[playerIndex]
+            self.historyLog.append("\(currentName) lost 1 life.")
             updateLifeLabel()
             checkForLoser()
-            self.historyLog.append("\(name) lost 1 life.")
             self.addPlayerButton.isEnabled = false
         }, for: .touchUpInside)
 
@@ -92,7 +120,8 @@ class ViewController: UIViewController {
             self.playerLives[playerIndex] += 1
             updateLifeLabel()
             checkForLoser()
-            self.historyLog.append("\(name) gained 1 life.")
+            let currentName = self.playerNames[playerIndex]
+            self.historyLog.append("\(currentName) gain 1 life.")
             self.addPlayerButton.isEnabled = false
         }, for: .touchUpInside)
 
@@ -105,9 +134,10 @@ class ViewController: UIViewController {
             if let delta = Int(inputField.text ?? "") {
                 let actual = min(delta, self.playerLives[playerIndex])
                 self.playerLives[playerIndex] -= actual
+                let currentName = self.playerNames[playerIndex]
+                self.historyLog.append("\(currentName) lost \(actual) life.")
                 updateLifeLabel()
                 checkForLoser()
-                self.historyLog.append("\(name) lost \(actual) life.")
                 self.addPlayerButton.isEnabled = false
             }
         }, for: .touchUpInside)
@@ -122,7 +152,8 @@ class ViewController: UIViewController {
                 self.playerLives[playerIndex] += delta
                 updateLifeLabel()
                 checkForLoser()
-                self.historyLog.append("\(name) gained \(delta) life.")
+                let currentName = self.playerNames[playerIndex]
+                self.historyLog.append("\(currentName) gained \(delta) life.")
                 self.addPlayerButton.isEnabled = false
             }
         }, for: .touchUpInside)
@@ -157,6 +188,7 @@ class ViewController: UIViewController {
         guard players.count < 8 else { return }
         let nextPlayerIndex = players.count + 1
         addPlayer(name: "Player \(nextPlayerIndex)")
+        self.historyLog.append("Player \(nextPlayerIndex) added")
         if players.count == 8 {
             sender.isEnabled = false
         }
@@ -176,4 +208,31 @@ class ViewController: UIViewController {
         loserLabel.alpha = 0
         addPlayerButton.isEnabled = true
     }
+    
+    @objc func handleNameTap(_ sender: UITapGestureRecognizer) {
+        guard let tappedLabel = sender.view as? UILabel else { return }
+
+        for (index, playerView) in players.enumerated() {
+            if let stack = playerView as? UIStackView,
+               let label = (stack.arrangedSubviews.first as? UILabel),
+               label == tappedLabel {
+
+                let alert = UIAlertController(title: "Edit Name", message: "Enter a new name", preferredStyle: .alert)
+                alert.addTextField { textField in
+                    textField.placeholder = "Player \(index + 1)"
+                    textField.text = self.playerNames[index]
+                }
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    if let newName = alert.textFields?.first?.text, !newName.isEmpty {
+                        label.text = newName
+                        self.playerNames[index] = newName
+                    }
+                }))
+                present(alert, animated: true, completion: nil)
+                break
+            }
+        }
+    }
+
 }
